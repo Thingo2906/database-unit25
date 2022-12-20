@@ -13,6 +13,7 @@ SELECT * FROM users;
 Using the movies_db database, write the correct SQL queries for each of these tasks:
 
 1. The title of every movie.
+
  SELECT title FROM movies;
 
 2. All information on the G-rated movies.
