@@ -14,17 +14,18 @@ Using the movies_db database, write the correct SQL queries for each of these ta
 
 1. The title of every movie.
 
- SELECT title FROM movies;
+     SELECT title FROM movies;
 
 2. All information on the G-rated movies.
- SELECT * FROM movies WHERE rating = 'G';
+
+     SELECT * FROM movies WHERE rating = 'G';
 
 3. The title and release year of every movie, ordered with the oldest movie first.
 
- SELECT title, release_year FROM movies ORDER BY release_year ASC;
+    SELECT title, release_year FROM movies ORDER BY release_year ASC;
 
 4. All information on the 5 longest movies.
-SELECT * FROM movies ORDER BY runtime DESC LIMIT 5;
+    SELECT * FROM movies ORDER BY runtime DESC LIMIT 5;
 
 5. A query that returns the columns of rating and total, tabulating the total number of G, PG, PG-13, and R-rated movies.
 SELECT rating, COUNT(rating) AS total FROM movies GROUP BY rating;
