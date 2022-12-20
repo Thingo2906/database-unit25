@@ -58,17 +58,19 @@ SELECT movies.title, COUNT(star_id) FROM roles JOIN movies ON (roles.movie_id = 
 
 12. The first name, last name, and average runtime of the five stars whose movies have the longest average.
 
-SELECT stars.first_name, stars.last_name, AVG(movies.runtime) FROM roles JOIN stars ON (roles.star_id = stars.id) JOIN movies ON (roles.movie_id = movies.id) GROUP BY stars.first_name, stars.last_name ORDER BY AVG(movies.runtime) DESC LIMIT 5;
+     SELECT stars.first_name, stars.last_name, AVG(movies.runtime) FROM roles JOIN stars ON (roles.star_id = stars.id) JOIN movies ON (roles.movie_id = movies.id)    GROUP BY stars.first_name, stars.last_name ORDER BY AVG(movies.runtime) DESC LIMIT 5;
 
 13. The first name, last name, and average runtime of the five stars whose movies have the longest average, among stars who have more than one movie in the database.
 
-SELECT stars.first_name, stars.last_name, AVG(movies.runtime) FROM roles JOIN stars ON (roles.star_id = stars.id) JOIN movies ON (roles.movie_id = movies.id) GROUP BY stars.first_name, stars.last_name HAVING COUNT(movie_id) > 1 ORDER BY AVG(movies.runtime) DESC LIMIT 5;
+      SELECT stars.first_name, stars.last_name, AVG(movies.runtime) FROM roles JOIN stars ON (roles.star_id = stars.id) JOIN movies ON (roles.movie_id = movies.id) GROUP BY stars.first_name, stars.last_name HAVING COUNT(movie_id) > 1 ORDER BY AVG(movies.runtime) DESC LIMIT 5;
 
 14. The titles of all movies that don't feature any stars in our database.
-SELECT movies.title FROM roles FULL JOIN movies ON (roles.movie_id = movies.id) GROUP BY title HAVING COUNT(star_id) = 0;
+     SELECT movies.title FROM roles FULL JOIN movies ON (roles.movie_id = movies.id) GROUP BY title HAVING COUNT(star_id) = 0;
 
 15. The first and last names of all stars that don't appear in any movies in our database.
-SELECT stars.first_name, stars.last_name FROM roles FULL JOIN stars ON (roles.star_id = stars.id) GROUP BY first_name, last_name HAVING COUNT(movie_id) = 0;
 
-16. The first names, last names, and titles corresponding to every role in the database, along with every movie title that doesn't have a star, and the first and last names of every star not in a movie.
-SELECT stars.first_name,stars.last_name, movies.title FROM roles FULL JOIN movies ON (roles.movie_id = movies.id) FULL JOIN stars ON (roles.star_id = stars.id) GROUP BY first_name, last_name, title;
+     SELECT stars.first_name, stars.last_name FROM roles FULL JOIN stars ON (roles.star_id = stars.id) GROUP BY first_name, last_name HAVING COUNT(movie_id) = 0;
+
+16. The first names, last names, and titles corresponding to every role in the database, along with every movie title that doesn't have a star, and the first and last names of every star not in a movie.'
+
+     SELECT stars.first_name,stars.last_name, movies.title FROM roles FULL JOIN movies ON (roles.movie_id = movies.id) FULL JOIN stars ON (roles.star_id = stars.id) GROUP BY first_name, last_name, title;
